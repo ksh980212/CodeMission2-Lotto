@@ -13,6 +13,14 @@ public class Wallet {
     return new Wallet(amount);
   }
 
+  public void payMoney(int price) {
+    amount -= price;
+  }
+
+  public boolean canBuyLotto(int price) {
+    return amount >= price;
+  }
+
   public long getAmount() {
     return amount;
   }

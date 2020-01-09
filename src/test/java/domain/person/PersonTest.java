@@ -2,7 +2,6 @@ package domain.person;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.sun.org.apache.bcel.internal.generic.ILOAD;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -29,5 +28,29 @@ class PersonTest {
     Assertions.assertThrows( IllegalArgumentException.class, () -> {
       Person person = Person.of(amount);
     });
+  }
+
+  @Test
+  void makeLottoNumber_작동한다() {
+    //given
+    Person person = Person.of(10000);
+
+    //when
+    person.buyAutoLottoAllProperty();
+
+    //then
+    assertThat(person.getLottoList()).isNotNull();
+  }
+
+  @Test
+  void 돈의수에따라_구매_로또갯수의_수가_결정된다() {
+    //given
+    Person person = Person.of(9999);
+
+    //when
+    person.buyAutoLottoAllProperty();
+
+    //then
+    assertThat(person.getLottoList().size()).isEqualTo(9);
   }
 }
