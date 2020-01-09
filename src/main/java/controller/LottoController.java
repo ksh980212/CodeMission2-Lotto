@@ -1,7 +1,6 @@
 package controller;
 
 import domain.person.Person;
-import dto.LottoResultDto;
 import view.InputView;
 import view.OutputView;
 
@@ -19,6 +18,7 @@ public class LottoController {
   }
 
   private static void confirmLotto(Person person) {
-//    person.confirmLotto(InputView.inputWinningNumbers());
+    person.confirmLotto(InputView.inputWinningNumbers());
+    OutputView.showLottoPrizeStatus(person.getLottoPrizeDto());
   }
 }

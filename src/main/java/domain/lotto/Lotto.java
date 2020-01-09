@@ -5,13 +5,23 @@ import java.util.List;
 public class Lotto {
 
   private final List<Integer> numbers;
+  private LottoPrize prize;
 
   private Lotto(List<Integer> numbers) {
     this.numbers = numbers;
+    this.prize = LottoPrize.DEFAULT;
   }
 
   public static Lotto of(List<Integer> numbers) {
     return new Lotto(numbers);
+  }
+
+  public void check(List<Integer> lastWinningNumbers) {
+    this.prize = LottoPrize.of(checkMatchedCount(lastWinningNumbers));
+  }
+
+  private long checkMatchedCount(List<Integer> lastWinningNumbers) {
+    return numbers.stream().filter(lastWinningNumbers::contains).count();
   }
 
   public List<Integer> getNumbers() {
@@ -24,5 +34,9 @@ public class Lotto {
 
   public int getSize() {
     return numbers.size();
+  }
+
+  public LottoPrize getPrize() {
+    return prize;
   }
 }

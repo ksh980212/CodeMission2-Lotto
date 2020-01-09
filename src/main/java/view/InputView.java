@@ -1,5 +1,6 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,7 +13,26 @@ public class InputView {
     return scanner.nextInt();
   }
 
-//  public static List<Integer> inputWinningNumbers() {
-//    System.out.println("지난 주 당첨 번호를 입력해 주세요");
-//  }
+  public static List<Integer> inputWinningNumbers() {
+    removeBuffer();
+    System.out.println("Enter last winning numbers");
+    String[] splitString = splitBySeparator(scanner.nextLine());
+    List<Integer> result = new ArrayList<>();
+    for(int i = 0 ; i < splitString.length ; i++) {
+      result.add(convertToInteger(splitString[i]));
+    }
+    return result;
+  }
+
+  private static String[] splitBySeparator(String inputString) {
+    return inputString.split(", ");
+  }
+
+  private static int convertToInteger(String string) {
+    return Integer.parseInt(string);
+  }
+
+  private static void removeBuffer() {
+    scanner.nextLine();
+  }
 }
