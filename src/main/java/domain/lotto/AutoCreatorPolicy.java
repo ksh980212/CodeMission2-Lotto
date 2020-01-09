@@ -19,7 +19,7 @@ public class AutoCreatorPolicy implements LottoCreatorPolicy{
   @Override
   public Lotto generate() {
     Collections.shuffle(lotteries);
-    return Lotto.of(lotteries);
+    return Lotto.of(lotteries.subList(0, 6));
   }
 
   private List<Integer> makeLottoNumber(int min, int max) {

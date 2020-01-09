@@ -17,6 +17,17 @@ class AutoCreatorPolicyTest {
     Lotto lotto = autoCreatorPolicy.generate();
     Set<Integer> set = new HashSet<>(lotto.getNumbers());
     assertThat(set.size()).isEqualTo(lotto.getNumbers().size());
+  }
 
+  @Test
+  void 자동으로_로또번호가_6개_생성된다() {
+    //given
+    AutoCreatorPolicy autoCreatorPolicy = AutoCreatorPolicy.of();
+
+    //when
+    Lotto lotto = autoCreatorPolicy.generate();
+
+    //then
+    assertThat(lotto.getSize()).isEqualTo(6);
   }
 }
