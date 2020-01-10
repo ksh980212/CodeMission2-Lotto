@@ -5,23 +5,26 @@ import java.util.Map;
 
 public enum LottoPrize {
 
-  FIRST(6, 2_000_000_000, true),
-  SECOND(5, 15_000_000, true),
-  THIRD(4, 50_000, true),
-  FOURTH(3, 5_000, true),
-  FIFTH(2, 0, false),
-  SIXTH(1, 0, false),
-  NONE(0, 0, false),
-  DEFAULT(-1, 0, false);
+  FIRST(6, 2_000_000_000, true, false),
+  SECOND(5, 30_000_000, true, true),
+  THIRD(5, 1_500_000, true, false),
+  FOURTH(4, 50_000, true, false),
+  FIFTH(3, 5_000, true, false),
+  SIXTH(2, 0, false, false),
+  SEVEN(1, 0, false, false),
+  NONE(0, 0, false, false),
+  DEFAULT(-1, 0, false, false);
 
   private final long matchedCount;
   private final long prizeAmount;
   private final boolean isDisplayed;
+  private final boolean isBonusMatched;
 
-  LottoPrize(long matchedCount, long prizeAmount, boolean isDisplayed) {
+  LottoPrize(long matchedCount, long prizeAmount, boolean isDisplayed, boolean isBonusMatched) {
     this.matchedCount = matchedCount;
     this.prizeAmount = prizeAmount;
     this.isDisplayed = isDisplayed;
+    this.isBonusMatched = isBonusMatched;
   }
 
   private final static Map<Long, LottoPrize> cachedLottoPrize = new HashMap<>();
@@ -36,6 +39,13 @@ public enum LottoPrize {
     return cachedLottoPrize.getOrDefault(matchedCount, DEFAULT);
   }
 
+  public static LottoPrize upgradeIfBonusConditionMatch(LottoPrize prize) {
+    if(prize == LottoPrize.THIRD) {
+      prize = LottoPrize.SECOND;
+    }
+    return prize;
+  }
+
   public boolean isDisplayed() {
     return isDisplayed;
   }
@@ -46,5 +56,9 @@ public enum LottoPrize {
 
   public long getPrizeAmount() {
     return prizeAmount;
+  }
+
+  public boolean isBonusMatched() {
+    return isBonusMatched;
   }
 }

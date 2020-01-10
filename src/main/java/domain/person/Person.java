@@ -34,6 +34,12 @@ public class Person {
     }
   }
 
+  public void checkBonusLotto(int bonusNumber) {
+    for(Lotto lotto : lottoList) {
+      lotto.checkBonus(bonusNumber);
+    }
+  }
+
   private void buyAutoLotto(Wallet wallet) {
     LottoCreator creator = LottoCreator.of(AutoCreatorPolicy.of());
     lottoList.add(creator.createLotto());

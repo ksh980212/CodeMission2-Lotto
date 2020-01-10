@@ -20,6 +20,12 @@ public class Lotto {
     this.prize = LottoPrize.of(checkMatchedCount(lastWinningNumbers));
   }
 
+  public void checkBonus(int bonusNumber) {
+    if(numbers.contains(bonusNumber)){
+      this.prize = LottoPrize.upgradeIfBonusConditionMatch(prize);
+    }
+  }
+
   private long checkMatchedCount(List<Integer> lastWinningNumbers) {
     return numbers.stream().filter(lastWinningNumbers::contains).count();
   }

@@ -24,6 +24,11 @@ public class InputView {
     return result;
   }
 
+  public static int inputBonusNumber() {
+    System.out.println("enter Bonus number");
+    return scanner.nextInt();
+  }
+
   private static String[] splitBySeparator(String inputString) {
     return inputString.split(", ");
   }

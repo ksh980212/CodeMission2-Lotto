@@ -19,6 +19,7 @@ public class LottoController {
 
   private static void confirmLotto(Person person) {
     person.confirmLotto(InputView.inputWinningNumbers());
+    person.checkBonusLotto(InputView.inputBonusNumber());
     OutputView.showLottoPrizeStatus(person.getLottoPrizeDto());
   }
 }

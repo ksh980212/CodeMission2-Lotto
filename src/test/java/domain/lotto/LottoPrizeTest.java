@@ -29,4 +29,16 @@ class LottoPrizeTest {
     //then
     assertThat(prize).isEqualTo(LottoPrize.NONE);
   }
+
+  @Test
+  void 다섯개를_맞추면_기본으로_3등이된다() {
+    //given
+    long matchedCount= 5;
+
+    //when
+    LottoPrize prize = LottoPrize.of(matchedCount);
+
+    //then
+    assertThat(prize).isEqualTo(LottoPrize.THIRD);
+  }
 }
