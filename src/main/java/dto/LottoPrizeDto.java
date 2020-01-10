@@ -28,12 +28,17 @@ public class LottoPrizeDto {
   }
 
   public void showYieldStatus() {
-    long earnedMoney = 0;
-    for(LottoPrize prize : LottoPrize.values()) {
-      earnedMoney += filterYield(prize);
-    }
+    long earnedMoney = calculateTotalPrize();
     BigDecimal investAmount = new BigDecimal(lottoPrizeList.size() * LottoConstant.LOTTO_PRICE);
     System.out.println(String.format("Total Yield : %f", new BigDecimal(earnedMoney).divide(investAmount, 2, RoundingMode.HALF_UP)));
+  }
+
+  private long calculateTotalPrize() {
+    long total = 0;
+    for(LottoPrize prize : LottoPrize.values()) {
+      total += filterYield(prize);
+    }
+    return total;
   }
 
   private void filterIsDisplayed(LottoPrize prize) {
@@ -54,7 +59,8 @@ public class LottoPrizeDto {
 
   private long filterYield(LottoPrize prize) {
     if(prize.isDisplayed()) {
-      return lottoPrizeList.stream().filter(x -> x.getMatchedCount() == prize.getMatchedCount()).filter(x -> x.isBonusMatched() == prize.isBonusMatched()).count() * prize.getPrizeAmount();
+      return lottoPrizeList.stream().filter(x -> x.getMatchedCount() == prize.getMatchedCount())
+          .filter( x -> x.isBonusMatched() == prize.isBonusMatched() ).count() * prize.getPrizeAmount();
     }
     return 0;
   }

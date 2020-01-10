@@ -22,7 +22,7 @@ public class LottoController {
   }
 
   private static void confirmLotto(Person person) {
-    List<LottoPrize> lottoPrizeList = person.confirmLotto(InputView.inputWinningNumbers(), InputView.inputBonusNumber());
+    List<LottoPrize> lottoPrizeList = person.confirmLotto( InputView.inputWinningNumbers(), InputView.inputBonusNumber() );
     OutputView.showLottoPrizeStatus(LottoPrizeDto.of(lottoPrizeList));
   }
 

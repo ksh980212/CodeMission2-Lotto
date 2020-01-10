@@ -65,4 +65,5 @@ public enum LottoPrize {
   public boolean isBonusMatched() {
     return isBonusMatched;
   }
+
 }

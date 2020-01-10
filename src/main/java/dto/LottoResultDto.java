@@ -17,10 +17,18 @@ public class LottoResultDto {
   }
 
   public void showStatus() {
+    showCountStatus();
+    showLottoStatus();
+  }
+
+  private void showCountStatus() {
     System.out.println(String.format("Manual count : %d, Auto count : %d",
         lottoList.stream().filter(x-> x.getType() == LottoType.MANUAL).count(),
         lottoList.stream().filter(x-> x.getType() == LottoType.AUTO).count()
     ));
+  }
+
+  private void showLottoStatus() {
     for (Lotto lotto : lottoList) {
       System.out.println(lotto);
     }

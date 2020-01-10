@@ -24,15 +24,18 @@ public class InputView {
   public static List<List<Integer>> inputManualLottoNumbers(int count) {
     removeBuffer();
     List< List<Integer> > manualLottoList = new ArrayList<>();
-
-    if(count > 0) {
-      System.out.println("Enter Manual Lotto number");
-    }
+    printManualLottoBoardIfExists(count);
 
     for(int i = 0 ; i < count ; i++) {
       manualLottoList.add( inputManualLottoNumbers() );
     }
     return manualLottoList;
+  }
+
+  private static void printManualLottoBoardIfExists(int count) {
+    if(count > 0) {
+      System.out.println("Enter Manual Lotto number");
+    }
   }
 
   private static List<Integer> inputManualLottoNumbers() {
