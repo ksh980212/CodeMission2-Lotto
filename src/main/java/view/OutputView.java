@@ -11,5 +11,6 @@ public class OutputView {
 
   public static void showLottoPrizeStatus(LottoPrizeDto lottoPrizeDto) {
     lottoPrizeDto.showPrizeStatus();
+    lottoPrizeDto.showYieldStatus();
   }
 }
