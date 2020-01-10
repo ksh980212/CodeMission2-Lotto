@@ -1,26 +1,21 @@
 package dto;
 
-import domain.lotto.Lotto;
 import domain.lotto.LottoCreator;
 import domain.lotto.LottoPrize;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.ArrayList;
 import java.util.List;
 
 public class LottoPrizeDto {
 
   private List<LottoPrize> lottoPrizeList;
 
-  private LottoPrizeDto(List<Lotto> lottoList) {
-    lottoPrizeList = new ArrayList<>();
-    for (Lotto lotto : lottoList) {
-      lottoPrizeList.add(lotto.getPrize());
-    }
+  private LottoPrizeDto(List<LottoPrize> lottoPrizeList) {
+    this.lottoPrizeList = lottoPrizeList;
   }
 
-  public static LottoPrizeDto of(List<Lotto> lottoList) {
-    return new LottoPrizeDto(lottoList);
+  public static LottoPrizeDto of(List<LottoPrize> lottoPrizeList) {
+    return new LottoPrizeDto(lottoPrizeList);
   }
 
   public void showPrizeStatus() {

@@ -27,7 +27,7 @@ class LottoTest {
 
     //when & then
     Assertions.assertThrows(IllegalArgumentException.class, () -> {
-      lotto.check(lastWinningNumbers);
+      lotto.check(lastWinningNumbers, 10);
     });
   }
 
@@ -39,7 +39,7 @@ class LottoTest {
 
     //when & then
     Assertions.assertThrows(IllegalArgumentException.class, () -> {
-      lotto.check(lastWinningNumbers);
+      lotto.check(lastWinningNumbers, 10);
     });
   }
 }

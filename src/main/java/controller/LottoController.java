@@ -1,6 +1,8 @@
 package controller;
 
+import domain.lotto.LottoPrize;
 import domain.person.Person;
+import dto.LottoPrizeDto;
 import java.util.List;
 import view.InputView;
 import view.OutputView;
@@ -36,8 +38,7 @@ public class LottoController {
   }
 
   private static void confirmLotto(Person person) {
-    person.confirmLotto(InputView.inputWinningNumbers());
-    person.checkBonusLotto(InputView.inputBonusNumber());
-    OutputView.showLottoPrizeStatus(person.getLottoPrizeDto());
+    List<LottoPrize> lottoPrizeList = person.confirmLotto(InputView.inputWinningNumbers(), InputView.inputBonusNumber());
+    OutputView.showLottoPrizeStatus(LottoPrizeDto.of(lottoPrizeList));
   }
 }

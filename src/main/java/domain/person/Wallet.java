@@ -2,7 +2,7 @@ package domain.person;
 
 public class Wallet {
 
-  private long amount; // 소유 금액
+  private long amount;
 
   private Wallet(long amount) {
     this.amount = amount;

@@ -6,13 +6,10 @@ public class Lotto {
 
   private final List<Integer> numbers;
   private final LottoType type;
-  private LottoPrize prize;
-  //인스턴스 줄이기
 
   private Lotto(List<Integer> numbers, LottoType type) {
     validateLottoNumbersSizeAndRange(numbers);
     this.numbers = numbers;
-    this.prize = LottoPrize.DEFAULT;
     this.type = type;
   }
 
@@ -21,16 +18,18 @@ public class Lotto {
   }
 
   /** 로또 당첨 확인 */
-  public void check(List<Integer> lastWinningNumbers) {
+  public LottoPrize check(List<Integer> lastWinningNumbers, int bonusNumber) {
     validateWinningNumbersSizeAndRange(lastWinningNumbers);
-    this.prize = LottoPrize.of(checkMatchedCount(lastWinningNumbers));
+    LottoPrize prize = LottoPrize.of(checkMatchedCount(lastWinningNumbers));
+    return checkBonus(bonusNumber, prize);
   }
 
   /** 로또 보너스 당첨 확인 */
-  public void checkBonus(int bonusNumber) {
+  private LottoPrize checkBonus(int bonusNumber, LottoPrize prize) {
     if(numbers.contains(bonusNumber)){
-      this.prize = LottoPrize.upgradeIfBonusConditionMatch(prize);
+      return LottoPrize.upgradeIfBonusConditionMatch(prize);
     }
+    return prize;
   }
 
   private long checkMatchedCount(List<Integer> lastWinningNumbers) {
@@ -92,10 +91,6 @@ public class Lotto {
 
   public int getSize() {
     return numbers.size();
-  }
-
-  public LottoPrize getPrize() {
-    return prize;
   }
 
   public LottoType getType() {

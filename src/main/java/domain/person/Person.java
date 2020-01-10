@@ -1,11 +1,10 @@
 package domain.person;
 
-import com.sun.org.apache.bcel.internal.generic.ILOAD;
+import domain.lotto.LottoPrize;
 import domain.lotto.creatorPolicy.AutoCreatorPolicy;
 import domain.lotto.Lotto;
 import domain.lotto.LottoCreator;
 import domain.lotto.creatorPolicy.ManualCreatorPolicy;
-import dto.LottoPrizeDto;
 import dto.LottoResultDto;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +22,6 @@ public class Person {
   public static Person of(long amount) {
     return new Person(amount);
   }
-
 
   /** API */
   public void buyAutoLottoAllProperty() {
@@ -45,16 +43,12 @@ public class Person {
     wallet.payMoney(LottoCreator.LOTTO_PRICE);
   }
 
-  public void confirmLotto(List<Integer> lastWinningNumbers) {
+  public List<LottoPrize> confirmLotto(List<Integer> lastWinningNumbers, int bonusNumber) {
+    List<LottoPrize> lottoPrizeList = new ArrayList<>();
     for(Lotto lotto : lottoList) {
-      lotto.check(lastWinningNumbers);
+      lottoPrizeList.add(lotto.check(lastWinningNumbers, bonusNumber));
     }
-  }
-
-  public void checkBonusLotto(int bonusNumber) {
-    for(Lotto lotto : lottoList) {
-      lotto.checkBonus(bonusNumber);
-    }
+    return lottoPrizeList;
   }
 
   private void validateCanBuyManualLotto() {
@@ -66,10 +60,6 @@ public class Person {
   /** Getter */
   public LottoResultDto getLottoStatusDto() {
     return LottoResultDto.of(lottoList);
-  }
-
-  public LottoPrizeDto getLottoPrizeDto() {
-    return LottoPrizeDto.of(lottoList);
   }
 
   public List<Lotto> getLottoList() {
