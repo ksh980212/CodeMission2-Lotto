@@ -40,6 +40,8 @@ public class LottoPrizeDto {
     int investAmount =  lottoPrizeList.size() * LottoCreator.LOTTO_PRICE;
     BigDecimal calculate = new BigDecimal(earnedMoney/ investAmount);
     System.out.println(String.format("Total Yield : %f", calculate.setScale(2, RoundingMode.CEILING)));
+
+    //이거 정확한지 확인해야함
   }
 
   private void filterIsDisplayed(LottoPrize prize) {

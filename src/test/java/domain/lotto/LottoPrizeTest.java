@@ -41,4 +41,17 @@ class LottoPrizeTest {
     //then
     assertThat(prize).isEqualTo(LottoPrize.THIRD);
   }
+
+  @Test
+  void 다섯개를_맞추고_보너스볼을_맞추면_2등이된다() {
+    //given
+    long matchedCount = 5;
+
+    //when
+    LottoPrize prize = LottoPrize.of(matchedCount);
+    prize = LottoPrize.upgradeIfBonusConditionMatch(prize);
+
+    //then
+    assertThat(prize).isEqualTo(LottoPrize.SECOND);
+  }
 }
