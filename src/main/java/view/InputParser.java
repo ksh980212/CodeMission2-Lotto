@@ -9,10 +9,6 @@ public class InputParser {
     return inputString.split(", ");
   }
 
-  public static int convertToInteger(String string) {
-    return Integer.parseInt(string);
-  }
-
   public static List<Integer> convertToIntegerList(String[] splitString) {
     List<Integer> result = new ArrayList<>();
     for(int i = 0 ; i < splitString.length ; i++) {
@@ -20,4 +16,9 @@ public class InputParser {
     }
     return result;
   }
+
+  private static int convertToInteger(String string) {
+    return Integer.parseInt(string);
+  }
+
 }

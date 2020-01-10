@@ -13,6 +13,7 @@ public class Wallet {
     return new Wallet(amount);
   }
 
+  /** API */
   public void payMoney(int price) {
     amount -= price;
   }
@@ -21,13 +22,17 @@ public class Wallet {
     return amount >= price;
   }
 
-  public long getAmount() {
-    return amount;
-  }
-
+  /** validate */
   private static void validatePositiveNumber(long amount) {
     if( amount < 0 ) {
       throw new IllegalArgumentException(String.format("%d is not positive number", amount));
     }
   }
+
+  /** Getter */
+  public long getAmount() {
+    return amount;
+  }
+
+
 }

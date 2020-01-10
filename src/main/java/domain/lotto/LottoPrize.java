@@ -39,12 +39,16 @@ public enum LottoPrize {
     return cachedLottoPrize.getOrDefault(matchedCount, DEFAULT);
   }
 
+  /** API */
+
   public static LottoPrize upgradeIfBonusConditionMatch(LottoPrize prize) {
     if(prize == LottoPrize.THIRD) {
       prize = LottoPrize.SECOND;
     }
     return prize;
   }
+
+  /** Getter */
 
   public boolean isDisplayed() {
     return isDisplayed;

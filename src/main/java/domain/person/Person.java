@@ -22,6 +22,8 @@ public class Person {
     return new Person(amount);
   }
 
+
+  /** API */
   public void buyAutoLottoAllProperty() {
     while(wallet.canBuyLotto(LottoCreator.LOTTO_PRICE)) {
       buyAutoLotto(wallet);
@@ -46,6 +48,8 @@ public class Person {
     wallet.payMoney(LottoCreator.LOTTO_PRICE);
   }
 
+
+  /** Getter */
   public LottoResultDto getLottoStatusDto() {
     return LottoResultDto.of(lottoList);
   }
@@ -57,6 +61,7 @@ public class Person {
   public List<Lotto> getLottoList() {
     return lottoList;
   }
+
   public Wallet getWallet() {
     return wallet;
   }
