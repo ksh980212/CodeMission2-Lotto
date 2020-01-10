@@ -5,14 +5,16 @@ import java.util.List;
 
 public class InputParser {
 
+  private final static String SEPARATOR = ", ";
+
   public static String[] splitBySeparator(String inputString) {
-    return inputString.split(", ");
+    return inputString.split(SEPARATOR);
   }
 
   public static List<Integer> convertToIntegerList(String[] splitString) {
     List<Integer> result = new ArrayList<>();
-    for(int i = 0 ; i < splitString.length ; i++) {
-      result.add(InputParser.convertToInteger(splitString[i]));
+    for (String s : splitString) {
+      result.add(InputParser.convertToInteger(s));
     }
     return result;
   }

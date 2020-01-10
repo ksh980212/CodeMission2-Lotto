@@ -9,7 +9,7 @@ public class AutoCreatorPolicy implements LottoCreatorPolicy{
   private List<Integer> lotteries;
 
   private AutoCreatorPolicy() {
-    lotteries = new ArrayList<>(makeLottoNumber(LottoCreator.LOTTO_MIN_NUMBER, LottoCreator.LOTTO_MAX_NUMBER));
+    lotteries = new ArrayList<>(makeLottoNumber());
   }
 
   public static AutoCreatorPolicy of() {
@@ -22,9 +22,9 @@ public class AutoCreatorPolicy implements LottoCreatorPolicy{
     return Lotto.of(lotteries.subList(0, 6));
   }
 
-  private List<Integer> makeLottoNumber(int min, int max) {
+  private List<Integer> makeLottoNumber() {
     List<Integer> numbers= new ArrayList<>();
-    for(int i = min; i <= max; i++) {
+    for(int i = LottoCreator.LOTTO_MIN_NUMBER; i <= LottoCreator.LOTTO_MAX_NUMBER; i++) {
       numbers.add(i);
     }
     return numbers;

@@ -14,8 +14,8 @@ public class LottoPrizeDto {
 
   private LottoPrizeDto(List<Lotto> lottoList) {
     lottoPrizeList = new ArrayList<>();
-    for(int i = 0, end= lottoList.size() ; i < end ; i++ ) {
-      lottoPrizeList.add(lottoList.get(i).getPrize());
+    for (Lotto lotto : lottoList) {
+      lottoPrizeList.add(lotto.getPrize());
     }
   }
 
@@ -37,11 +37,8 @@ public class LottoPrizeDto {
     for(LottoPrize prize : LottoPrize.values()) {
       earnedMoney += filterYield(prize);
     }
-    int investAmount =  lottoPrizeList.size() * LottoCreator.LOTTO_PRICE;
-    BigDecimal calculate = new BigDecimal(earnedMoney/ investAmount);
-    System.out.println(String.format("Total Yield : %f", calculate.setScale(2, RoundingMode.CEILING)));
-
-    //이거 정확한지 확인해야함
+    BigDecimal investAmount = new BigDecimal(lottoPrizeList.size() * LottoCreator.LOTTO_PRICE);
+    System.out.println(String.format("Total Yield : %f", new BigDecimal(earnedMoney).divide(investAmount, 2, RoundingMode.HALF_UP)));
   }
 
   private void filterIsDisplayed(LottoPrize prize) {
@@ -53,11 +50,11 @@ public class LottoPrizeDto {
   private void filterBonusMatched(LottoPrize prize) {
     if(prize.isBonusMatched()) {
       System.out.println(String.format("%d correct  + bonus Matched (%d amount) %d count",
-          prize.getMatchedCount(), prize.getPrizeAmount(), lottoPrizeList.stream().filter(x -> x.getMatchedCount() == prize.getMatchedCount()).filter(x-> x.isBonusMatched() == true).count()));
+          prize.getMatchedCount(), prize.getPrizeAmount(), lottoPrizeList.stream().filter(x -> x.getMatchedCount() == prize.getMatchedCount()).filter(LottoPrize::isBonusMatched).count()));
       return;
     }
       System.out.println(String.format("%d correct (%d amount) %d count",
-          prize.getMatchedCount(), prize.getPrizeAmount(), lottoPrizeList.stream().filter(x -> x.getMatchedCount() == prize.getMatchedCount()).filter(x-> x.isBonusMatched() == false).count()));
+          prize.getMatchedCount(), prize.getPrizeAmount(), lottoPrizeList.stream().filter(x -> x.getMatchedCount() == prize.getMatchedCount()).filter(x-> !x.isBonusMatched()).count()));
   }
 
   private long filterYield(LottoPrize prize) {

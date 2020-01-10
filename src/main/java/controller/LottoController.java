@@ -22,8 +22,8 @@ public class LottoController {
   private static void buyManualLotto(Person person) {
     int manualLottoCount = InputView.inputManualLottoCount();
     List<List<Integer>> list = InputView.inputManualLottoNumbers(manualLottoCount);
-    for(int i = 0, end = list.size(); i < end ; i++) {
-      person.buyManualLotto(list.get(i));
+    for (List<Integer> integers : list) {
+      person.buyManualLotto(integers);
     }
   }
 

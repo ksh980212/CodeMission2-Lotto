@@ -47,8 +47,8 @@ public class Lotto {
   }
 
   private void validateNumbersRange(List<Integer> numbers) {
-    for(int i = 0, end= numbers.size() ; i < end ; i++) {
-      validateNumberRange(numbers.get(i));
+    for (Integer number : numbers) {
+      validateNumberRange(number);
     }
   }
 
@@ -72,8 +72,8 @@ public class Lotto {
   }
 
   private void validateWinningNumbersRange(List<Integer> lastWinningNumbers) {
-    for(int i = 0, end= lastWinningNumbers.size() ; i < end ; i++) {
-      validateWinningNumberRange(lastWinningNumbers.get(i));
+    for (Integer lastWinningNumber : lastWinningNumbers) {
+      validateWinningNumberRange(lastWinningNumber);
     }
   }
 

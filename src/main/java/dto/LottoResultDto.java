@@ -17,8 +17,8 @@ public class LottoResultDto {
 
   public void showStatus() {
     System.out.println(String.format("buy Lotto Count : %d", lottoList.size()));
-    for(int i = 0, end= lottoList.size(); i< end; i++ ) {
-      System.out.println(lottoList.get(i));
+    for (Lotto lotto : lottoList) {
+      System.out.println(lotto);
     }
   }
 }
