@@ -26,7 +26,7 @@ class PersonTest {
 
     // when & then
     Assertions.assertThrows( IllegalArgumentException.class, () -> {
-      Person person = Person.of(amount);
+      Person.of(amount);
     });
   }
 

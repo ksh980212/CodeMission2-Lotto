@@ -16,11 +16,7 @@ public class InputView {
   public static List<Integer> inputWinningNumbers() {
     removeBuffer();
     System.out.println("Enter last winning numbers");
-    String[] splitString = splitBySeparator(scanner.nextLine());
-    List<Integer> result = new ArrayList<>();
-    for(int i = 0 ; i < splitString.length ; i++) {
-      result.add(convertToInteger(splitString[i]));
-    }
+    List<Integer> result = convertToIntegerList(InputParser.splitBySeparator(scanner.nextLine()));
     return result;
   }
 
@@ -29,12 +25,12 @@ public class InputView {
     return scanner.nextInt();
   }
 
-  private static String[] splitBySeparator(String inputString) {
-    return inputString.split(", ");
-  }
-
-  private static int convertToInteger(String string) {
-    return Integer.parseInt(string);
+  private static List<Integer> convertToIntegerList(String[] splitString) {
+    List<Integer> result = new ArrayList<>();
+    for(int i = 0 ; i < splitString.length ; i++) {
+      result.add(InputParser.convertToInteger(splitString[i]));
+    }
+    return result;
   }
 
   private static void removeBuffer() {
