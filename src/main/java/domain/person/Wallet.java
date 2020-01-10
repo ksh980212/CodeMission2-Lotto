@@ -25,7 +25,7 @@ public class Wallet {
   /** validate */
   private static void validatePositiveNumber(long amount) {
     if( amount < 0 ) {
-      throw new IllegalArgumentException(String.format("%d is not positive number", amount));
+      throw new IllegalArgumentException( String.format("%d is not positive number", amount) );
     }
   }
 

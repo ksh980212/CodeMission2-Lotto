@@ -23,14 +23,14 @@ public class InputView {
   /** 수동 로또 번호 입력 */
   public static List<List<Integer>> inputManualLottoNumbers(int count) {
     removeBuffer();
-    List<List<Integer>> manualLottoList = new ArrayList<>();
+    List< List<Integer> > manualLottoList = new ArrayList<>();
 
     if(count > 0) {
       System.out.println("Enter Manual Lotto number");
     }
 
     for(int i = 0 ; i < count ; i++) {
-      manualLottoList.add(inputManualLottoNumbers());
+      manualLottoList.add( inputManualLottoNumbers() );
     }
     return manualLottoList;
   }

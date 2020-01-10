@@ -28,7 +28,7 @@ public class Lotto {
 
   /** 로또 보너스 당첨 확인 */
   private LottoPrize checkBonus(int bonusNumber, LottoPrize prize) {
-    if(numbers.contains(bonusNumber)){
+    if(numbers.contains(bonusNumber)) {
       return LottoPrize.upgradeIfBonusConditionMatch(prize);
     }
     return prize;

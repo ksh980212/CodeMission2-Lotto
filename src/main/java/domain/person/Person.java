@@ -34,7 +34,7 @@ public class Person {
   }
 
   private void buyAutoLotto(Wallet wallet) {
-    LottoCreator creator = LottoCreator.of(AutoCreatorPolicy.of());
+    LottoCreator creator = LottoCreator.of( AutoCreatorPolicy.of() );
     lottoList.add(creator.createLotto());
     wallet.payMoney(LottoConstant.LOTTO_PRICE);
   }
@@ -65,7 +65,7 @@ public class Person {
   private void validateDuplicateWinningNumbers(List<Integer> lastWinningNumbers, int bonusNumber) {
     Set<Integer> set = new HashSet<>(lastWinningNumbers);
     set.add(bonusNumber);
-    if(set.size() != ( 6 + 1 )) {
+    if( set.size() != ( 6 + 1 ) ) {
       throw new IllegalArgumentException("Duplicate Winning numbers or should be 6 + 1");
     }
   }

@@ -14,7 +14,7 @@ public class InputParser {
   public static List<Integer> convertToIntegerList(String[] splitString) {
     List<Integer> result = new ArrayList<>();
     for (String s : splitString) {
-      result.add(InputParser.convertToInteger(s));
+      result.add( InputParser.convertToInteger(s) );
     }
     return result;
   }
