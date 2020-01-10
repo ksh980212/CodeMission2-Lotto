@@ -42,4 +42,15 @@ class LottoTest {
       lotto.check(lastWinningNumbers, 10);
     });
   }
+
+  @Test
+  void 로또번호가_중복되면_에러가_발생한다() {
+    //given
+    List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 5));
+
+    //when & then
+    Assertions.assertThrows(IllegalArgumentException.class, () -> {
+      Lotto.of(numbers, LottoType.MANUAL);
+    });
+  }
 }

@@ -1,6 +1,8 @@
 package domain.lotto;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
 
@@ -40,6 +42,7 @@ public class Lotto {
   private void validateLottoNumbersSizeAndRange(List<Integer> numbers) {
     validateLottoNumbersSize(numbers);
     validateNumbersRange(numbers);
+    validateDuplicateNumbers(numbers);
   }
 
   private void validateLottoNumbersSize(List<Integer> numbers) {
@@ -51,6 +54,13 @@ public class Lotto {
   private void validateNumbersRange(List<Integer> numbers) {
     for (Integer number : numbers) {
       validateNumberRange(number);
+    }
+  }
+
+  private void validateDuplicateNumbers(List<Integer> numbers) {
+    Set<Integer> set = new HashSet<>(numbers);
+    if(set.size() != numbers.size()) {
+      throw new IllegalArgumentException("Duplicate in Lotto numbers");
     }
   }
 

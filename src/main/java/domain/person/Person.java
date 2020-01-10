@@ -7,7 +7,9 @@ import domain.lotto.LottoCreator;
 import domain.lotto.creatorPolicy.ManualCreatorPolicy;
 import dto.LottoResultDto;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Person {
 
@@ -44,6 +46,7 @@ public class Person {
   }
 
   public List<LottoPrize> confirmLotto(List<Integer> lastWinningNumbers, int bonusNumber) {
+    validateDuplicateWinningNumbers(lastWinningNumbers, bonusNumber);
     List<LottoPrize> lottoPrizeList = new ArrayList<>();
     for(Lotto lotto : lottoList) {
       lottoPrizeList.add(lotto.check(lastWinningNumbers, bonusNumber));
@@ -51,9 +54,18 @@ public class Person {
     return lottoPrizeList;
   }
 
+  /** validate */
   private void validateCanBuyManualLotto() {
     if(wallet.getAmount() < LottoCreator.LOTTO_PRICE) {
       throw new IllegalArgumentException("Can't buy Manual Lotto exceed Amount");
+    }
+  }
+
+  private void validateDuplicateWinningNumbers(List<Integer> lastWinningNumbers, int bonusNumber) {
+    Set<Integer> set = new HashSet<>(lastWinningNumbers);
+    set.add(bonusNumber);
+    if(set.size() != 7) {
+      throw new IllegalArgumentException("Duplicate Winning numbers or should be 6 + 1");
     }
   }
 
