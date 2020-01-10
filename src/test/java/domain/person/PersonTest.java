@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 class PersonTest {
 
   @Test
-  void Person_생성자가_초기화된다() {
+  void Person_생성자가_정상적으로_작동된다() {
     //given
     long amount = 10000;
 
@@ -20,7 +20,7 @@ class PersonTest {
   }
 
   @Test
-  void 총액이_음수이면_에러가_발생한다() {
+  void 총액의_입력이_음수가_들어오면_에러가_발생한다() {
     // given
     long amount = -10000;
 
@@ -31,7 +31,7 @@ class PersonTest {
   }
 
   @Test
-  void makeLottoNumber_작동한다() {
+  void 로또를_구매하면_사람이_로또를_소유하게된다() {
     //given
     Person person = Person.of(10000);
 

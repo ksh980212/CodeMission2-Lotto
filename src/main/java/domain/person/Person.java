@@ -10,8 +10,8 @@ import java.util.List;
 
 public class Person {
 
-  private final Wallet wallet; // 소유 지갑
-  private final List<Lotto> lottoList; // 소유 로또
+  private final Wallet wallet;
+  private final List<Lotto> lottoList;
 
   private Person(long amount) {
     this.wallet = Wallet.of(amount);

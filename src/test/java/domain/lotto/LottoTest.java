@@ -30,4 +30,16 @@ class LottoTest {
       lotto.check(lastWinningNumbers);
     });
   }
+
+  @Test
+  void 지난당첨_로또에_범위밖의_수가_입력되면_에러가_발생한다() {
+    //given
+    List<Integer> lastWinningNumbers =  new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 50)); // 50:  범위내
+    Lotto lotto = Lotto.of(new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6)));
+
+    //when & then
+    Assertions.assertThrows(IllegalArgumentException.class, () -> {
+      lotto.check(lastWinningNumbers);
+    });
+  }
 }
