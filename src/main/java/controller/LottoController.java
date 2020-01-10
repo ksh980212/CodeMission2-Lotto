@@ -21,6 +21,11 @@ public class LottoController {
     printLottoStatus(person);
   }
 
+  private static void confirmLotto(Person person) {
+    List<LottoPrize> lottoPrizeList = person.confirmLotto(InputView.inputWinningNumbers(), InputView.inputBonusNumber());
+    OutputView.showLottoPrizeStatus(LottoPrizeDto.of(lottoPrizeList));
+  }
+
   private static void buyManualLotto(Person person) {
     List<List<Integer>> list = InputView.inputManualLottoNumbers(InputView.inputManualLottoCount());
     for (List<Integer> integers : list) {
@@ -34,10 +39,5 @@ public class LottoController {
 
   private static void printLottoStatus(Person person) {
     OutputView.showLottoStatus(person.getLottoStatusDto());
-  }
-
-  private static void confirmLotto(Person person) {
-    List<LottoPrize> lottoPrizeList = person.confirmLotto(InputView.inputWinningNumbers(), InputView.inputBonusNumber());
-    OutputView.showLottoPrizeStatus(LottoPrizeDto.of(lottoPrizeList));
   }
 }

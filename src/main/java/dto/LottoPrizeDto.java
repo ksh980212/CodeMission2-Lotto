@@ -1,6 +1,6 @@
 package dto;
 
-import domain.lotto.LottoCreator;
+import domain.lotto.LottoConstant;
 import domain.lotto.LottoPrize;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -32,7 +32,7 @@ public class LottoPrizeDto {
     for(LottoPrize prize : LottoPrize.values()) {
       earnedMoney += filterYield(prize);
     }
-    BigDecimal investAmount = new BigDecimal(lottoPrizeList.size() * LottoCreator.LOTTO_PRICE);
+    BigDecimal investAmount = new BigDecimal(lottoPrizeList.size() * LottoConstant.LOTTO_PRICE);
     System.out.println(String.format("Total Yield : %f", new BigDecimal(earnedMoney).divide(investAmount, 2, RoundingMode.HALF_UP)));
   }
 

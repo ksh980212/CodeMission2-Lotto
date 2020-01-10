@@ -65,7 +65,7 @@ public class Lotto {
   }
 
   private void validateNumberRange(int number) {
-    if( number > LottoCreator.LOTTO_MAX_NUMBER || number < LottoCreator.LOTTO_MIN_NUMBER ) {
+    if( number > LottoConstant.LOTTO_MAX_NUMBER || number < LottoConstant.LOTTO_MIN_NUMBER ) {
       throw new IllegalArgumentException("Lotto numbers should be 1 ~ 45");
     }
   }
@@ -89,7 +89,7 @@ public class Lotto {
   }
 
   private void validateWinningNumberRange(int number) {
-    if( number > LottoCreator.LOTTO_MAX_NUMBER || number < LottoCreator.LOTTO_MIN_NUMBER ) {
+    if( number > LottoConstant.LOTTO_MAX_NUMBER || number < LottoConstant.LOTTO_MIN_NUMBER ) {
       throw new IllegalArgumentException("Lotto Winning numbers should be 1 ~ 45");
     }
   }

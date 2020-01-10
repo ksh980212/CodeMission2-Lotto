@@ -1,5 +1,6 @@
 package domain.person;
 
+import domain.lotto.LottoConstant;
 import domain.lotto.LottoPrize;
 import domain.lotto.creatorPolicy.AutoCreatorPolicy;
 import domain.lotto.Lotto;
@@ -27,7 +28,7 @@ public class Person {
 
   /** API */
   public void buyAutoLottoAllProperty() {
-    while(wallet.canBuyLotto(LottoCreator.LOTTO_PRICE)) {
+    while(wallet.canBuyLotto(LottoConstant.LOTTO_PRICE)) {
       buyAutoLotto(wallet);
     }
   }
@@ -35,14 +36,14 @@ public class Person {
   private void buyAutoLotto(Wallet wallet) {
     LottoCreator creator = LottoCreator.of(AutoCreatorPolicy.of());
     lottoList.add(creator.createLotto());
-    wallet.payMoney(LottoCreator.LOTTO_PRICE);
+    wallet.payMoney(LottoConstant.LOTTO_PRICE);
   }
 
   public void buyManualLotto(List<Integer> list) {
     validateCanBuyManualLotto();
     LottoCreator creator = LottoCreator.of(ManualCreatorPolicy.of(list));
     lottoList.add(creator.createLotto());
-    wallet.payMoney(LottoCreator.LOTTO_PRICE);
+    wallet.payMoney(LottoConstant.LOTTO_PRICE);
   }
 
   public List<LottoPrize> confirmLotto(List<Integer> lastWinningNumbers, int bonusNumber) {
@@ -56,7 +57,7 @@ public class Person {
 
   /** validate */
   private void validateCanBuyManualLotto() {
-    if(wallet.getAmount() < LottoCreator.LOTTO_PRICE) {
+    if(wallet.getAmount() < LottoConstant.LOTTO_PRICE) {
       throw new IllegalArgumentException("Can't buy Manual Lotto exceed Amount");
     }
   }
@@ -64,7 +65,7 @@ public class Person {
   private void validateDuplicateWinningNumbers(List<Integer> lastWinningNumbers, int bonusNumber) {
     Set<Integer> set = new HashSet<>(lastWinningNumbers);
     set.add(bonusNumber);
-    if(set.size() != 7) {
+    if(set.size() != ( 6 + 1 )) {
       throw new IllegalArgumentException("Duplicate Winning numbers or should be 6 + 1");
     }
   }
