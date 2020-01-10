@@ -1,5 +1,6 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,12 +14,35 @@ public class InputView {
     return scanner.nextInt();
   }
 
+  /** 수동 로또 갯수 입력 */
+  public static int inputManualLottoCount() {
+    System.out.println("enter Manual Lotto Count");
+    return scanner.nextInt();
+  }
+
+  /** 수동 로또 번호 입력 */
+  public static List<List<Integer>> inputManualLottoNumbers(int count) {
+    removeBuffer();
+    List<List<Integer>> manualLottoList = new ArrayList<>();
+
+    if(count > 0) {
+      System.out.println("Enter Manual Lotto number");
+    }
+
+    for(int i = 0 ; i < count ; i++) {
+      manualLottoList.add(inputManualLottoNumbers());
+    }
+    return manualLottoList;
+  }
+
+  private static List<Integer> inputManualLottoNumbers() {
+    return InputParser.convertToIntegerList(InputParser.splitBySeparator(scanner.nextLine()));
+  }
+
   /** 지난 당첨 번호 입력 */
   public static List<Integer> inputWinningNumbers() {
-    removeBuffer();
     System.out.println("Enter last winning numbers");
-    List<Integer> result = InputParser.convertToIntegerList(InputParser.splitBySeparator(scanner.nextLine()));
-    return result;
+    return InputParser.convertToIntegerList(InputParser.splitBySeparator(scanner.nextLine()));
   }
 
   /** 보너스 볼 입력 */

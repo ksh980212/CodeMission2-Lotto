@@ -3,6 +3,7 @@ package domain.person;
 import domain.lotto.AutoCreatorPolicy;
 import domain.lotto.Lotto;
 import domain.lotto.LottoCreator;
+import domain.lotto.ManualCreatorPolicy;
 import dto.LottoPrizeDto;
 import dto.LottoResultDto;
 import java.util.ArrayList;
@@ -30,6 +31,18 @@ public class Person {
     }
   }
 
+  private void buyAutoLotto(Wallet wallet) {
+    LottoCreator creator = LottoCreator.of(AutoCreatorPolicy.of());
+    lottoList.add(creator.createLotto());
+    wallet.payMoney(LottoCreator.LOTTO_PRICE);
+  }
+
+  public void buyManualLotto(List<Integer> list) {
+    LottoCreator creator = LottoCreator.of(ManualCreatorPolicy.of(list));
+    lottoList.add(creator.createLotto());
+    wallet.payMoney(LottoCreator.LOTTO_PRICE);
+  }
+
   public void confirmLotto(List<Integer> lastWinningNumbers) {
     for(Lotto lotto : lottoList) {
       lotto.check(lastWinningNumbers);
@@ -41,13 +54,6 @@ public class Person {
       lotto.checkBonus(bonusNumber);
     }
   }
-
-  private void buyAutoLotto(Wallet wallet) {
-    LottoCreator creator = LottoCreator.of(AutoCreatorPolicy.of());
-    lottoList.add(creator.createLotto());
-    wallet.payMoney(LottoCreator.LOTTO_PRICE);
-  }
-
 
   /** Getter */
   public LottoResultDto getLottoStatusDto() {
