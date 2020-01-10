@@ -35,4 +35,16 @@ public enum LottoPrize {
   public static LottoPrize of(long matchedCount) {
     return cachedLottoPrize.getOrDefault(matchedCount, DEFAULT);
   }
+
+  public boolean isDisplayed() {
+    return isDisplayed;
+  }
+
+  public long getMatchedCount() {
+    return matchedCount;
+  }
+
+  public long getPrizeAmount() {
+    return prizeAmount;
+  }
 }

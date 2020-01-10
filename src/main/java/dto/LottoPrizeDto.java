@@ -24,6 +24,16 @@ public class LottoPrizeDto {
     System.out.println("Winning statistics");
     System.out.println("-------------------");
 
-    //생각해 봅시다 어떻게 보여주면 좋을지
+    for(LottoPrize prize : LottoPrize.values()) {
+      filterIsDisplayed(prize);
+    }
+  }
+
+  private void filterIsDisplayed(LottoPrize prize) {
+    if(prize.isDisplayed()) {
+      System.out.println(String.format("%d correct (%d amount) %d count",
+          prize.getMatchedCount(), prize.getPrizeAmount(),
+          lottoPrizeList.stream().filter(x -> x.getMatchedCount() == prize.getMatchedCount()).count()));
+    }
   }
 }
