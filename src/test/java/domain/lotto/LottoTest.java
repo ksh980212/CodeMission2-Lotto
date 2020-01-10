@@ -15,7 +15,7 @@ class LottoTest {
 
     //when & then
     Assertions.assertThrows(IllegalArgumentException.class, () -> {
-      Lotto.of(numbers);
+      Lotto.of(numbers, LottoType.MANUAL);
     });
   }
 
@@ -23,7 +23,7 @@ class LottoTest {
   void 지난당첨_로또수가_여섯개가_아니면_에러가_발생한다() {
     //given
     List<Integer> lastWinningNumbers =  new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
-    Lotto lotto = Lotto.of(new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6)));
+    Lotto lotto = Lotto.of(new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6)), LottoType.MANUAL);
 
     //when & then
     Assertions.assertThrows(IllegalArgumentException.class, () -> {
@@ -35,7 +35,7 @@ class LottoTest {
   void 지난당첨_로또에_범위밖의_수가_입력되면_에러가_발생한다() {
     //given
     List<Integer> lastWinningNumbers =  new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 50)); // 50:  범위내
-    Lotto lotto = Lotto.of(new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6)));
+    Lotto lotto = Lotto.of(new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6)), LottoType.MANUAL);
 
     //when & then
     Assertions.assertThrows(IllegalArgumentException.class, () -> {

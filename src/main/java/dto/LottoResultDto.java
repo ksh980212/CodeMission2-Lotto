@@ -1,6 +1,7 @@
 package dto;
 
 import domain.lotto.Lotto;
+import domain.lotto.LottoType;
 import java.util.List;
 
 public class LottoResultDto {
@@ -16,7 +17,10 @@ public class LottoResultDto {
   }
 
   public void showStatus() {
-    System.out.println(String.format("buy Lotto Count : %d", lottoList.size()));
+    System.out.println(String.format("Manual count : %d, Auto count : %d",
+        lottoList.stream().filter(x-> x.getType() == LottoType.MANUAL).count(),
+        lottoList.stream().filter(x-> x.getType() == LottoType.AUTO).count()
+    ));
     for (Lotto lotto : lottoList) {
       System.out.println(lotto);
     }

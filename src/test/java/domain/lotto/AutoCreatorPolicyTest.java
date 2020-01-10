@@ -2,6 +2,7 @@ package domain.lotto;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import domain.lotto.creatorPolicy.AutoCreatorPolicy;
 import java.util.HashSet;
 import java.util.Set;
 import org.junit.jupiter.api.Test;

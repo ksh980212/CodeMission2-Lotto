@@ -1,5 +1,7 @@
-package domain.lotto;
+package domain.lotto.creatorPolicy;
 
+import domain.lotto.Lotto;
+import domain.lotto.LottoType;
 import java.util.List;
 
 public class ManualCreatorPolicy implements LottoCreatorPolicy{
@@ -16,6 +18,6 @@ public class ManualCreatorPolicy implements LottoCreatorPolicy{
 
   @Override
   public Lotto generate() {
-    return Lotto.of(lotteries);
+    return Lotto.of(lotteries, LottoType.MANUAL);
   }
 }

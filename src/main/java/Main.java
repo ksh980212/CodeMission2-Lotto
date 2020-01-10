@@ -7,10 +7,10 @@ public class Main {
       LottoController.buyLottoAndConfirm();
     }
     catch(IllegalArgumentException e){
-      System.out.println("Wrong parameter occur" + e.getMessage());
+      System.out.println("Wrong parameter occur " + e.getMessage());
     }
     catch(Exception e) {
-      System.out.println("Error occur" + e.getMessage());
+      System.out.println("Error occur " + e.getMessage());
     }
   }
 }

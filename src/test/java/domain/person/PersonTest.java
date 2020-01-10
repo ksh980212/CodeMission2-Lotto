@@ -2,6 +2,8 @@ package domain.person;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -52,5 +54,16 @@ class PersonTest {
 
     //then
     assertThat(person.getLottoList().size()).isEqualTo(9);
+  }
+
+  @Test
+  void 보유한_금액으로_수동_로또를_살수없으면_에러가_발생한다() {
+    //given
+    Person person = Person.of(999);
+
+    //when & then
+    Assertions.assertThrows(IllegalArgumentException.class, () -> {
+      person.buyManualLotto(new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6)));
+    });
   }
 }

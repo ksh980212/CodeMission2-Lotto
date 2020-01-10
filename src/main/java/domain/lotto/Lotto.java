@@ -5,16 +5,19 @@ import java.util.List;
 public class Lotto {
 
   private final List<Integer> numbers;
+  private final LottoType type;
   private LottoPrize prize;
+  //인스턴스 줄이기
 
-  private Lotto(List<Integer> numbers) {
+  private Lotto(List<Integer> numbers, LottoType type) {
     validateLottoNumbersSizeAndRange(numbers);
     this.numbers = numbers;
     this.prize = LottoPrize.DEFAULT;
+    this.type = type;
   }
 
-  public static Lotto of(List<Integer> numbers) {
-    return new Lotto(numbers);
+  public static Lotto of(List<Integer> numbers, LottoType type) {
+    return new Lotto(numbers, type);
   }
 
   /** 로또 당첨 확인 */
@@ -59,7 +62,6 @@ public class Lotto {
   }
 
   /** 지난 당첨 번호 validate */
-
   private void validateWinningNumbersSizeAndRange(List<Integer> lastWinningNumbers) {
     validateWinningNumbersSize(lastWinningNumbers);
     validateWinningNumbersRange(lastWinningNumbers);
@@ -88,10 +90,6 @@ public class Lotto {
     return numbers;
   }
 
-  public String toString() {
-    return numbers.toString();
-  }
-
   public int getSize() {
     return numbers.size();
   }
@@ -99,4 +97,14 @@ public class Lotto {
   public LottoPrize getPrize() {
     return prize;
   }
+
+  public LottoType getType() {
+    return type;
+  }
+
+  /** toString() */
+  public String toString() {
+    return numbers.toString();
+  }
+
 }

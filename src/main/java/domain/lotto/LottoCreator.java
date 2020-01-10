@@ -1,5 +1,7 @@
 package domain.lotto;
 
+import domain.lotto.creatorPolicy.LottoCreatorPolicy;
+
 public class LottoCreator {
 
   public final static int LOTTO_MIN_NUMBER = 1;
