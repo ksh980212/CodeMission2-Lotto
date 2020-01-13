@@ -55,6 +55,8 @@ public class Person {
     return lottoPrizeList;
   }
 
+  // COMMENT validate 를 별도 구역에 넣지는 않고요
+  // private 메소드는 첫 번째로 사용되는 public 메소드 아래에 넣는 것이 일반적입니다
   /** validate */
   private void validateCanBuyManualLotto() {
     if(wallet.getAmount() < LottoConstant.LOTTO_PRICE) {

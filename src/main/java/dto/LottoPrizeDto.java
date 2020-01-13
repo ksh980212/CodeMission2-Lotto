@@ -47,6 +47,7 @@ public class LottoPrizeDto {
     }
   }
 
+  // COMMENT 여기도 메소드로 많이 뺄 수 있는게 보이네요~
   private void filterBonusMatched(LottoPrize prize) {
     if(prize.isBonusMatched()) {
       System.out.println(String.format("%d correct  + bonus Matched (%d amount) %d count",

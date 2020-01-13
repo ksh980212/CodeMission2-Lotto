@@ -6,6 +6,8 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+// COMMENT 테스트 코드는 모두 살펴봤는데 정말 많이 늘었네요!!
+// 코드 컨벤션 및 커버리지 외에 딱히 말씀드릴게 없어요 잘하셨습니다~
 class LottoTest {
 
   @Test
