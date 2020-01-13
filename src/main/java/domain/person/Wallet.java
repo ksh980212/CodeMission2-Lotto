@@ -8,12 +8,16 @@ public class Wallet {
     this.amount = amount;
   }
 
-  public static Wallet of (long amount) {
+  public static Wallet of(long amount) {
     validatePositiveNumber(amount);
     return new Wallet(amount);
   }
 
-  /** API */
+  /** Getter */
+  public long getAmount() {
+    return amount;
+  }
+
   public void payMoney(int price) {
     amount -= price;
   }
@@ -24,15 +28,8 @@ public class Wallet {
 
   /** validate */
   private static void validatePositiveNumber(long amount) {
-    if( amount < 0 ) {
-      throw new IllegalArgumentException( String.format("%d is not positive number", amount) );
+    if (amount < 0) {
+      throw new IllegalArgumentException(String.format("%d is not positive number", amount));
     }
   }
-
-  /** Getter */
-  public long getAmount() {
-    return amount;
-  }
-
-
 }

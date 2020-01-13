@@ -30,22 +30,13 @@ public enum LottoPrize {
   private final static Map<Long, LottoPrize> cachedLottoPrize = new HashMap<>();
 
   static {
-    for(LottoPrize lottoPrize : LottoPrize.values()) {
+    for (LottoPrize lottoPrize : LottoPrize.values()) {
       cachedLottoPrize.put(lottoPrize.matchedCount, lottoPrize);
     }
   }
 
   public static LottoPrize of(long matchedCount) {
     return cachedLottoPrize.getOrDefault(matchedCount, DEFAULT);
-  }
-
-  /** API */
-
-  public static LottoPrize upgradeIfBonusConditionMatch(LottoPrize prize) {
-    if(prize == LottoPrize.THIRD) {
-      prize = LottoPrize.SECOND;
-    }
-    return prize;
   }
 
   /** Getter */
@@ -66,4 +57,12 @@ public enum LottoPrize {
     return isBonusMatched;
   }
 
+
+  /** 5개 + 보너스 볼 맞추면 3등 => 2등으로 전환 */
+  public static LottoPrize upgradeIfBonusConditionMatch(LottoPrize prize) {
+    if (prize == LottoPrize.THIRD) {
+      prize = LottoPrize.SECOND;
+    }
+    return prize;
+  }
 }

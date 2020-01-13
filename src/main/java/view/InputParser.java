@@ -22,5 +22,4 @@ public class InputParser {
   private static int convertToInteger(String string) {
     return Integer.parseInt(string);
   }
-
 }

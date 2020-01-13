@@ -1,7 +1,7 @@
 package domain.lotto.creatorPolicy;
 
 import domain.lotto.Lotto;
-import domain.lotto.LottoConstant;
+import domain.lotto.LottoCreator;
 import domain.lotto.LottoType;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,7 +27,7 @@ public class AutoCreatorPolicy implements LottoCreatorPolicy{
 
   private List<Integer> makeLottoNumber() {
     List<Integer> numbers= new ArrayList<>();
-    for(int i = LottoConstant.LOTTO_MIN_NUMBER; i <= LottoConstant.LOTTO_MAX_NUMBER; i++) {
+    for (int i = LottoCreator.LOTTO_MIN_NUMBER; i <= LottoCreator.LOTTO_MAX_NUMBER; i++) {
       numbers.add(i);
     }
     return numbers;
