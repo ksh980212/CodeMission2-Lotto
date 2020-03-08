@@ -1,3 +1,2 @@
-# LottoCodeStudy
-Lotto Mission step1 ~ step3 다시 짠 코드
-
+# Java Mission 
+## step2: Lotto 
